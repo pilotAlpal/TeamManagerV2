@@ -11,4 +11,15 @@ public class Team implements Serializable{
     private TeamStats info;
     private ArrayList<Player> players;
     private Diary agenda;
+
+    public String getName(){return name;}
+    public TeamStats getInfo(){return info;}
+    public ArrayList<Player> getPlayers(){
+        return players;
+    }
+    public Diary getDiary(){
+        return agenda;
+    }
+
+
 }

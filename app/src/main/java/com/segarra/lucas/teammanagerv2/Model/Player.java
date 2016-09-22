@@ -24,7 +24,6 @@ public class Player implements Serializable {
     public Position getPosition(){return playerInfo.getPosition();}
     public PlayerStats getPlayerInfo(){return playerInfo;}
     public Bitmap getPhoto(){return photo;}
-
     public void changePic(Bitmap newPic){
         photo=newPic;
     }
