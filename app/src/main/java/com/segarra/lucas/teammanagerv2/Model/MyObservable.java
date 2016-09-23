@@ -1,5 +1,7 @@
 package com.segarra.lucas.teammanagerv2.Model;
 
+import java.util.ArrayList;
+
 /**
  * Created by lucas.segarra on 22/09/2016.
  */

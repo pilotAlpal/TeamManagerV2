@@ -3,6 +3,7 @@ package com.segarra.lucas.teammanagerv2.Model;
 import android.graphics.Bitmap;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * Created by lucas.segarra on 22/09/2016.
@@ -11,10 +12,18 @@ public class Player implements Serializable {
     private String name,phone;
     private PlayerStats playerInfo;
     private Bitmap photo;
+    private ArrayList<String> teamNames;
 
     public Player(String nombre,String telefono,Position posicion){
         name=nombre;phone=telefono;playerInfo=new PlayerStats(posicion);
+        teamNames=new ArrayList<>();
     }
+
+    public Player(String nombre, String telefono, Position pos, ArrayList<String> equipos) {
+        name=nombre;phone=telefono;playerInfo=new PlayerStats(pos);
+        teamNames=equipos;
+    }
+
     public String getName(){return name;}
     public String getPhone(){return phone;}
     public int getGols(){return playerInfo.getGols();}
@@ -29,4 +38,19 @@ public class Player implements Serializable {
     }
 
 
+    public void changePos(Position newPos) {
+        playerInfo.setPosition(newPos);
+    }
+
+    public void removeEnrolledTeam(String myTeamName) {
+        teamNames.remove(myTeamName);
+    }
+
+    public void enrollTeam(String teamName) {
+        teamNames.add(teamName);
+    }
+
+    public int getCountTeams() {
+        return teamNames.size();
+    }
 }

@@ -8,4 +8,20 @@ import java.io.Serializable;
 
 public enum MatchResult implements Serializable{
     Won,Drawn,Lost;
+
+    public boolean isWon(){
+        if(this.equals(Won))
+            return true;
+        return false;
+    }
+    public boolean isDrawn(){
+        if(this.equals(Drawn))
+            return true;
+        return false;
+    }
+    public boolean isLost(){
+        if(this.equals(Lost))
+            return true;
+        return false;
+    }
 }

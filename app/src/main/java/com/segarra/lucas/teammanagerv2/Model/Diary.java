@@ -12,11 +12,13 @@ public class Diary implements Serializable {
     private ArrayList<MyEvents> eventos;
     private ArrayList<Match> ultimos,proximos;
     private Match prPartido;
-
     public Diary(ArrayList<MyEvents> e,ArrayList<Match> u,ArrayList<Match> p,Match m){
         eventos=e;ultimos=u;proximos=p;prPartido=m;
     }
-
+    public Diary(){
+        eventos=new ArrayList<>();ultimos=new ArrayList<>();proximos=new ArrayList<>();
+        prPartido=new NoShceduledMatches();
+    }
     private Match getNext(){
         if(proximos.isEmpty())
             return new NoShceduledMatches();
@@ -49,15 +51,32 @@ public class Diary implements Serializable {
         else
             proximos.add(m);
     }
-
     public void addEvent(MyEvents e){
         eventos.add(e);
     }
-
     public void addToNextMatch(Player p){
         prPartido.addToConvocatory(p);
     }
     public void removeFromNextMatch(Player p){
         prPartido.removeFromConvocatory(p);
     }
+    public void nextMatchFinished(){
+        prPartido.matchFinished();
+        ultimos.add(prPartido);
+        prPartido=getNext();
+        proximos.remove(prPartido);
+    }
+
+    public void addScoredGol(Gol gol) {
+        prPartido.scoreGol(gol);
+    }
+    public void addRecievedGol(Gol g){
+        prPartido.recieveGol(g);
+    }
+    public Match getNextMatch(){
+        return prPartido;
+    }
+
+
+
 }
