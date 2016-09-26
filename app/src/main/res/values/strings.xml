@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">TeamMangaerV2</string>
+    <string name="calendar">Calendario</string>
+    <string name="controller_code">Controller</string>
+    <string name="confirmed">Confirmados</string>
+    <string name="error_login">Error de login.</string>
+    <string name="error_signin">Error de signin.</string>
+    <string name="join">Acudo</string>
+    <string name="leave">Falto</string>
+    <string name="login">Log in</string>
+    <string name="log_out">Salir</string>
+    <string name="next_match">Prox. Part.</string>
+    <string name="next_rival">Prox. Rival.</string>
+    <string name="nom_usr">Nombre usuario</string>
+    <string name="pass">Password</string>
+    <string name="player">Jugador</string>
+    <string name="phone">Phone</string>
+    <string name="pos">Position</string>
+    <string name="signin">Sign in</string>
+    <string name="team">Equipo</string>
 </resources>

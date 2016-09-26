@@ -150,4 +150,21 @@ public class DatabaseHandler implements Serializable{
     public void createMatch(String teamName,Match newMatch) {
 
     }
+
+    /**
+     *
+     * @return cierto si un equipo existe y me puedo apuntar a el
+     */
+    public boolean validEnrollTeamName() {
+        return true;
+    }
+
+    /**
+     * Guarda la relacion entre un equipo y un jugador
+     * @param phone
+     * @param team
+     */
+    public void linkTeamAndPlayer(String phone, String team) {
+
+    }
 }

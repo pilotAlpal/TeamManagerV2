@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/myRegularGrey"
+    tools:showIn="@layout/activity_home">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/player"
+        android:onClick="statsJugador"
+        android:id="@+id/b_stats_jug" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/team"
+        android:onClick="statsEquipo"
+        android:id="@+id/b_stats_eq" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="calendario"
+        android:text="@string/calendar"
+        android:id="@+id/b_calendario" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/log_out"
+        android:onClick="volver"
+        android:id="@+id/b_volver"/>
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.segarra.lucas.teammanagerv2.View.NextMatchFragment"
+        android:id="@+id/fr_next_match"
+        tools:layout="@layout/layout_next_match" />
+
+
+</LinearLayout>
+
