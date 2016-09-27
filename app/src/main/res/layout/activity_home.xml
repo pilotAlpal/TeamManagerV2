@@ -12,13 +12,13 @@
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        tools:layout="@layout/layout_options" />
+        tools:layout="@layout/fragment_options" />
 
-    <fragment android:name="com.segarra.lucas.teammanagerv2.View.Abstract.ViewFragment"
+    <fragment android:name="com.segarra.lucas.teammanagerv2.View.NewsFragment"
         android:id="@+id/f_info"
         android:layout_weight="2"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        tools:layout="@layout/layout_info" />
+        tools:layout="@layout/fragment_info" />
 
 </LinearLayout>

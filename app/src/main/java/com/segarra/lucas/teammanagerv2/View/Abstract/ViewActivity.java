@@ -22,6 +22,12 @@ public abstract class ViewActivity extends Activity implements Session.MyObserve
         controller=c;
         controller.addObserver(this);
     }
+
+    protected void loadController(){
+        String key=getString(R.string.controller_code);
+        Controller c=(Controller) getIntent().getExtras().getSerializable(key);
+        setController(c);
+    }
     protected Bundle getControlledBundle(){
         Bundle b=new Bundle();
         String key=getString(R.string.controller_code);

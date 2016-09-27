@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="end|right"
+    android:weightSum="1">
+
+    <include layout="@layout/layout_player_image"/>
+
+
+    <include layout="@layout/layout_rating"/>
+
+    <include layout="@layout/layout_player_stats"
+        android:id="@+id/psl_psv"/>
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.movildat.lucassegarra.teammanager.view.EditProfileFragment"
+        android:id="@+id/edit_prof_fragment"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

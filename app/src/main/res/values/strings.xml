@@ -16,6 +16,14 @@
     <string name="player">Jugador</string>
     <string name="phone">Phone</string>
     <string name="pos">Position</string>
+    <string name="rating">Valoración</string>
     <string name="signin">Sign in</string>
     <string name="team">Equipo</string>
+    <string name="nombreUsuario">Nombre Usuario</string>
+    <string name="position">Posición</string>
+    <string name="dorsal">Dorsal</string>
+    <string name="goles">Goles</string>
+    <string name="asists">Asistencias</string>
+    <string name="expulsions">Expulsiones</string>
+    <string name="played">jugados</string>
 </resources>

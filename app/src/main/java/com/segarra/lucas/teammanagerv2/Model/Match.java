@@ -9,14 +9,14 @@ import java.util.Date;
  */
 
 public class Match extends MyEvents {
-    private MatchResult resultado;
+
     private MatchState estado;
     private ArrayList<Player> convocatoria;
     private ArrayList<Gol> golesF,golesC;
 
     public Match(Date d, Time t){
         super(d,t);
-        resultado=MatchResult.Drawn;
+
         estado=MatchState.Unstarted;
         convocatoria=new ArrayList<>();
         golesF=new ArrayList<>();
@@ -28,7 +28,7 @@ public class Match extends MyEvents {
     public ArrayList<Gol>getRecievedGols(){
         return golesC;
     }
-    public MatchResult getResult(){return resultado;}
+    public MatchResult getResult(){return MatchResult.getResult(golesF,golesC);}
     public MatchState getState(){return estado;}
     public ArrayList<Player> getConvocatory(){return convocatoria;}
     public int getScoredCount(){return golesF.size();}
@@ -45,20 +45,14 @@ public class Match extends MyEvents {
     public void removeFromConvocatory(Player p){
         convocatoria.remove(p);
     }
-    private void setResultado(){
-        int scored=golesF.size(),recieved=golesC.size();
-        if(scored<recieved)
-            resultado=MatchResult.Lost;
-        else if(scored>recieved)
-            resultado=MatchResult.Won;
-        else resultado=MatchResult.Drawn;
-    }
+
     public void scoreGol(Gol gol){
         golesF.add(gol);
-        setResultado();
     }
     public void recieveGol(Gol gol){
         golesC.add(gol);
-        setResultado();
+    }
+    public MatchInfo getMatchInfo(){
+        return new MatchInfo(golesF,golesC,estado,convocatoria);
     }
 }

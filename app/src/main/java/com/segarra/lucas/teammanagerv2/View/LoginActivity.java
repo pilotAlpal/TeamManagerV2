@@ -19,7 +19,7 @@ public class LogInActivity extends ViewActivity {
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         etPhone =(EditText) findViewById(R.id.et_li_telefono);

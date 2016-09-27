@@ -84,5 +84,52 @@ public class Team implements Serializable{
     public int getPlayedRecord(){return info.getPlayedRecord();}
 
 
+    public PlayerStats getPartnerStats(String partnerId) {
+        PlayerStats r=new PlayerStats(Position.Central);
+        for(Player p:players){
+            if(p.getName().equalsIgnoreCase(partnerId))
+                return p.getPlayerInfo();
+        }
+        return r;
+    }
 
+    public ArrayList<MyEvents> getEvents() {
+        return agenda.getEvents();
+    }
+
+    public ArrayList<Match> getLastMatches() {
+        return agenda.getLastMatches();
+    }
+
+    public ArrayList<Match> getNextMatches() {
+        return agenda.getNextMatches();
+    }
+
+    public Match getNextMatch() {
+        return agenda.getNextMatch();
+    }
+
+    public ArrayList<Player> getNextConvocatory() {
+        return agenda.getNextMatch().getConvocatory();
+    }
+
+    private Player getPlayer(String partnerId){
+        for(Player p:players){
+            if(p.getName().equalsIgnoreCase(partnerId))
+                return p;
+        }
+        return null;
+    }
+
+    public ArrayList<Message> getTeamMessages() {
+        return agenda.getMessages();
+    }
+
+    public MatchInfo getNextMatchInfo() {
+        return agenda.getNextMatch().getMatchInfo();
+    }
+
+    public EventsInfo getEventsInfo() {
+        return agenda.getEventsInfo();
+    }
 }

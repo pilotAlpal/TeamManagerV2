@@ -1,27 +1,18 @@
 package com.segarra.lucas.teammanagerv2.View;
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-
-import com.movildat.lucassegarra.teammangaerv2.R;
 import com.segarra.lucas.teammanagerv2.Controller.Controller;
-import com.segarra.lucas.teammanagerv2.Model.MatchInfo;
+import com.segarra.lucas.teammanagerv2.Model.EventsInfo;
 import com.segarra.lucas.teammanagerv2.View.Abstract.ViewFragment;
 
 import java.util.Observable;
 
 /**
- * Created by lucas.segarra on 26/09/2016.
+ * Created by lucas.segarra on 27/09/2016.
  */
-
-public class NextMatchFragment extends ViewFragment {
-
+public class EventsFragment extends ViewFragment {
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
-        return inflater.inflate(R.layout.fragment_next_match,viewGroup,false);
+    public ViewFragment newInstance(Controller controller) {
+        return null;
     }
 
     @Override
@@ -84,12 +75,7 @@ public class NextMatchFragment extends ViewFragment {
 
     }
 
-    @Override
-    public ViewFragment newInstance(Controller controller) {
-        return null;
-    }
-
-    public void fill(MatchInfo nextMatchInfo) {
+    public void fill(EventsInfo eventsInfo) {
 
     }
 }

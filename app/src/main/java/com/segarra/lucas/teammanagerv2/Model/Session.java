@@ -35,8 +35,7 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
      */
     public void logIn(String phone,String pass){
         if(dao.validLogin(phone,pass)){
-            jugador=dao.getPlayer(phone);
-            equipo=dao.getLastTeamLogged(phone);
+            loadFromBd(phone);
             notifyLogged();
         }
         else
@@ -183,9 +182,7 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
         notifyMatchCreated();
     }
 
-    //AUXILIAR METHODS
-
-    private void logOut() {
+    public void logOut() {
         try {
             finalize();
         } catch (Throwable throwable) {
@@ -193,13 +190,21 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
         }
     }
 
+
+    //AUXILIAR METHODS
+
     private void checkAtLeastOneTeam(){
         int numTeams=jugador.getCountTeams();
         if(numTeams==0)
             notifyNoTeamUser();
     }
 
-    //COMPONENT GETTERS
+    private void loadFromBd(String phone){
+        jugador=dao.getPlayer(phone);
+        equipo=dao.getLastTeamLogged(phone);
+    }
+
+    //COMPONENT GETTERS (USED BY CONTROLLER FOR FILLING VIEWS)
     
     private String getMyPlayerId(){
         return jugador.getPhone();
@@ -208,6 +213,39 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
     private String getMyTeamName(){
         return equipo.getName();
     }
+
+    public PlayerStats getMyPlayerStats() {
+        return jugador.getPlayerInfo();
+    }
+
+    public PlayerStats getPartnerStats(String partnerId){
+        return equipo.getPartnerStats(partnerId);
+    }
+
+    public TeamStats getMyTeamStats(){
+        return equipo.getInfo();
+    }
+
+    public ArrayList<MyEvents> getMyTeamEvents(){
+        return equipo.getEvents();
+    }
+
+    public ArrayList<Match> getLastMatches(){
+        return equipo.getLastMatches();
+    }
+
+    public ArrayList<Match> getNextMatches(){
+        return equipo.getNextMatches();
+    }
+
+    public ArrayList<Message> getTeamMessages() {
+        return equipo.getTeamMessages();
+    }
+
+    public MatchInfo getNextMatchInfo() {
+        return equipo.getNextMatchInfo();
+    }
+
 
     //OBSERVABLE IMPLEMENTED
 
@@ -288,6 +326,10 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
     private void notifyInvalidLogin() {
         for(MyObserver obs:observadores)
             obs.onInvalidLogin();
+    }
+
+    public EventsInfo getEventsInfo() {
+        return equipo.getEventsInfo();
     }
 
 

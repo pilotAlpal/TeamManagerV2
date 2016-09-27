@@ -11,12 +11,14 @@ import java.util.Date;
 public class Diary implements Serializable {
     private ArrayList<MyEvents> eventos;
     private ArrayList<Match> ultimos,proximos;
+    private ArrayList<Message> mensajes;
     private Match prPartido;
-    public Diary(ArrayList<MyEvents> e,ArrayList<Match> u,ArrayList<Match> p,Match m){
+    public Diary(ArrayList<MyEvents> e,ArrayList<Match> u,ArrayList<Match> p,Match m,ArrayList<Message> conver){
         eventos=e;ultimos=u;proximos=p;prPartido=m;
+        mensajes=conver;
     }
     public Diary(){
-        eventos=new ArrayList<>();ultimos=new ArrayList<>();proximos=new ArrayList<>();
+        eventos=new ArrayList<>();ultimos=new ArrayList<>();proximos=new ArrayList<>();eventos=new ArrayList<>();
         prPartido=new NoShceduledMatches();
     }
     private Match getNext(){
@@ -78,5 +80,23 @@ public class Diary implements Serializable {
     }
 
 
+    public ArrayList<MyEvents> getEvents() {
+        return eventos;
+    }
 
+    public ArrayList<Match> getLastMatches() {
+        return ultimos;
+    }
+
+    public ArrayList<Match> getNextMatches() {
+        return proximos;
+    }
+
+    public ArrayList<Message> getMessages() {
+        return mensajes;
+    }
+
+    public EventsInfo getEventsInfo() {
+        return new EventsInfo(eventos,ultimos,proximos);
+    }
 }

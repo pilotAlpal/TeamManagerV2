@@ -1,8 +1,10 @@
 package com.segarra.lucas.teammanagerv2.View;
 import android.os.Bundle;
+import android.view.View;
 
 import com.movildat.lucassegarra.teammangaerv2.R;
-import com.segarra.lucas.teammanagerv2.View.Abstract.ViewActivity;
+import com.segarra.lucas.teammanagerv2.View.Abstract.ControlledViewActivity;
+import com.segarra.lucas.teammanagerv2.View.Abstract.ViewFragment;
 
 import java.util.Observable;
 
@@ -10,11 +12,29 @@ import java.util.Observable;
  * Created by lucas.segarra on 26/09/2016.
  */
 
-public class HomeActivity extends ViewActivity {
+public class HomeActivity extends ControlledViewActivity {
     @Override
     public void onCreate(Bundle saved){
         super.onCreate(saved);
         setContentView(R.layout.activity_home);
+    }
+
+    //OPTIONS GUI BUTTONS RESPONSE
+
+    public void playerButton(View view){
+        PlayerFragment p=new PlayerFragment().newInstance(controller);
+        changeRightFragment(p);
+    }
+    public void teamButton(View view){
+        TeamFragment t=new TeamFragment().newInstance(controller);
+        changeRightFragment(t);
+    }
+    public void eventsButton(View view){
+        EventsFragment c=new EventsFragment();
+        changeRightFragment(c);
+    }
+    public void logOutButton(View view){
+        controller.logOut();
     }
 
     @Override
@@ -75,5 +95,9 @@ public class HomeActivity extends ViewActivity {
     @Override
     public void update(Observable o, Object arg) {
 
+    }
+
+    private void changeRightFragment(ViewFragment viewFragment){
+        getFragmentManager().beginTransaction().replace(R.id.f_info,viewFragment);
     }
 }

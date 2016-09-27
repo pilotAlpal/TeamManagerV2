@@ -7,6 +7,10 @@ import com.segarra.lucas.teammanagerv2.Model.MyEvents;
 import com.segarra.lucas.teammanagerv2.Model.Player;
 import com.segarra.lucas.teammanagerv2.Model.Position;
 import com.segarra.lucas.teammanagerv2.Model.Session;
+import com.segarra.lucas.teammanagerv2.View.EventsFragment;
+import com.segarra.lucas.teammanagerv2.View.NewsFragment;
+import com.segarra.lucas.teammanagerv2.View.NextMatchFragment;
+import com.segarra.lucas.teammanagerv2.View.PlayerFragment;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -71,8 +75,20 @@ public class Controller implements Serializable{
         return Position.values();
     }
 
+    public void logOut() {
+        mySession.logOut();
+    }
 
     public void removeObservers() {
         mySession.removeObservers();
     }
+
+    //METHOS FILLING VIEWS DATA
+    public void fillData(PlayerFragment p) {
+        p.fill(mySession.getMyPlayerStats());
+    }
+    public void fillData(NewsFragment n){n.fill(mySession.getTeamMessages());}
+    public void fillData(NextMatchFragment nM){nM.fill(mySession.getNextMatchInfo());}
+    public void fillData(EventsFragment eF){eF.fill(mySession.getEventsInfo());}
+
 }

@@ -12,7 +12,7 @@ import com.movildat.lucassegarra.teammangaerv2.R;
 import com.segarra.lucas.teammanagerv2.Controller.Controller;
 import com.segarra.lucas.teammanagerv2.Model.Position;
 
-import com.segarra.lucas.teammanagerv2.View.Abstract.ViewActivity;
+import com.segarra.lucas.teammanagerv2.View.Abstract.ControlledViewActivity;
 
 
 import java.util.Observable;
@@ -21,7 +21,7 @@ import java.util.Observable;
  * Created by lucas.segarra on 26/09/2016.
  */
 
-public class SignInActivity extends ViewActivity {
+public class SignInActivity extends ControlledViewActivity {
 
     private Spinner spPos;
     private EditText etNombre,etContrasena,etEquipo,etTelefono;
@@ -29,9 +29,6 @@ public class SignInActivity extends ViewActivity {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
-        String key=getString(R.string.controller_code);
-        Controller c=(Controller) getIntent().getExtras().getSerializable(key);
-        setController(c);
         spPos=(Spinner) findViewById(R.id.sp_si_pos);
         Position[] pos= controller.getPlayersPositions();
         ArrayAdapter<Position> adapter=new ArrayAdapter<Position>(this,android.R.layout.simple_spinner_item,pos);
@@ -60,8 +57,8 @@ public class SignInActivity extends ViewActivity {
 
     @Override
     public void onInvalidSignUp() {
-        String errKey=getString(R.string.error_signin);
-        Toast.makeText(this,errKey,Toast.LENGTH_SHORT).show();
+        String errMsg=getString(R.string.error_signin);
+        Toast.makeText(this,errMsg,Toast.LENGTH_SHORT).show();
     }
 
     @Override
