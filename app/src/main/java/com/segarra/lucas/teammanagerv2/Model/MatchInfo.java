@@ -18,5 +18,6 @@ public class MatchInfo implements Serializable {
         convs=convocados;
         resultado=MatchResult.getResult(favor,contra);
     }
+    public ArrayList<Player> getConvocatory(){return convs;}
 
 }

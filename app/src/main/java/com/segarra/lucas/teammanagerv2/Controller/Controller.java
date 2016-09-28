@@ -11,6 +11,7 @@ import com.segarra.lucas.teammanagerv2.View.EventsFragment;
 import com.segarra.lucas.teammanagerv2.View.NewsFragment;
 import com.segarra.lucas.teammanagerv2.View.NextMatchFragment;
 import com.segarra.lucas.teammanagerv2.View.PlayerFragment;
+import com.segarra.lucas.teammanagerv2.View.TeamFragment;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -70,6 +71,8 @@ public class Controller implements Serializable{
     public void deleteObserver(Session.MyObserver observer){
         mySession.delObserver(observer);
     }
+    public void addToNextMatch(){mySession.addToNextMatch();}
+    public void removeFromNextMatch(){mySession.removeFromNextMatch();}
 
     public Position[] getPlayersPositions() {
         return Position.values();
@@ -84,11 +87,10 @@ public class Controller implements Serializable{
     }
 
     //METHOS FILLING VIEWS DATA
-    public void fillData(PlayerFragment p) {
-        p.fill(mySession.getMyPlayerStats());
-    }
+    public void fillData(PlayerFragment p) {p.fill(mySession.getMyPlayerStats());}
     public void fillData(NewsFragment n){n.fill(mySession.getTeamMessages());}
     public void fillData(NextMatchFragment nM){nM.fill(mySession.getNextMatchInfo());}
-    public void fillData(EventsFragment eF){eF.fill(mySession.getEventsInfo());}
+    public void fillData(EventsFragment eF){eF.fill(mySession.getEventsInfo(),mySession.getLastMatches(),mySession.getNextMatches());}
+    public void fillData(TeamFragment tF){tF.fill(mySession.getMyTeamStats());}
 
 }

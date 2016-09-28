@@ -1,25 +1,37 @@
 package com.segarra.lucas.teammanagerv2.View;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.movildat.lucassegarra.teammangaerv2.R;
 import com.segarra.lucas.teammanagerv2.Controller.Controller;
-import com.segarra.lucas.teammanagerv2.Model.TeamStats;
 import com.segarra.lucas.teammanagerv2.View.Abstract.ViewFragment;
 
 import java.util.Observable;
 
 /**
- * Created by lucas.segarra on 27/09/2016.
+ * Created by lucas.segarra on 28/09/2016.
  */
-public class TeamFragment extends ViewFragment{
+
+public class EditProfileFragment extends ViewFragment {
     @Override
-    public TeamFragment newInstance(Controller controller) {
-        TeamFragment teamFragment=new TeamFragment();
-        teamFragment.setController(controller);
-        controller.fillData(teamFragment);
-        return teamFragment;
+    public ViewFragment newInstance(Controller controller) {
+        EditProfileFragment editProfileFragment=new EditProfileFragment();
+        editProfileFragment.setController(controller);
+        return editProfileFragment;
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.edit_profile_view, container, false);
     }
 
     @Override
     public void onInvalidLogin() {
+
 
     }
 
@@ -76,8 +88,5 @@ public class TeamFragment extends ViewFragment{
     @Override
     public void update(Observable o, Object arg) {
 
-    }
-
-    public void fill(TeamStats myTeamStats) {
     }
 }

@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fp_main_layout"
     android:gravity="end|right"
     android:weightSum="1">
 
@@ -17,7 +18,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.movildat.lucassegarra.teammanager.view.EditProfileFragment"
+        android:name="com.segarra.lucas.teammanagerv2.View.EditProfileFragment"
         android:id="@+id/edit_prof_fragment"
         android:layout_gravity="center_horizontal" />
 

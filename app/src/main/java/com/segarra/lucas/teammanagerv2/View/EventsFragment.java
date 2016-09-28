@@ -1,18 +1,55 @@
 package com.segarra.lucas.teammanagerv2.View;
 
+import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.movildat.lucassegarra.teammangaerv2.R;
 import com.segarra.lucas.teammanagerv2.Controller.Controller;
 import com.segarra.lucas.teammanagerv2.Model.EventsInfo;
+import com.segarra.lucas.teammanagerv2.Model.Match;
 import com.segarra.lucas.teammanagerv2.View.Abstract.ViewFragment;
+import com.segarra.lucas.teammanagerv2.View.Adapters.EventsListAdapter;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
  * Created by lucas.segarra on 27/09/2016.
  */
 public class EventsFragment extends ViewFragment {
+
+    private RecyclerView myRecycler;
+    private CardView myCard;
+    private EventsInfo myEventsInfo;
+    private ArrayList<Match> last,next;
+
     @Override
-    public ViewFragment newInstance(Controller controller) {
-        return null;
+    public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
+        View v= inflater.inflate(R.layout.fragment_events,viewGroup,false);
+        myCard=(CardView)v.findViewById(R.id.cv_matches);
+        myRecycler=(RecyclerView)v.findViewById(R.id.rv_next_matches);
+        myRecycler.setHasFixedSize(true);
+        RecyclerView.LayoutManager rVlM=new LinearLayoutManager(getActivity());
+        myRecycler.setLayoutManager(rVlM);
+        RecyclerView.Adapter adapter=new EventsListAdapter(myEventsInfo.getEvents());
+        myRecycler.setAdapter(adapter);
+        return v;
+    }
+    @Override
+    public EventsFragment newInstance(Controller controller) {
+        EventsFragment eventsFragment=new EventsFragment();
+        eventsFragment.setController(controller);
+        controller.fillData(eventsFragment);
+        return eventsFragment;
+    }
+
+    public void fill(EventsInfo eventsInfo, ArrayList<Match> lastMatches, ArrayList<Match> nextMatches) {
+        myEventsInfo=eventsInfo;last=lastMatches;next=nextMatches;
     }
 
     @Override
@@ -75,7 +112,4 @@ public class EventsFragment extends ViewFragment {
 
     }
 
-    public void fill(EventsInfo eventsInfo) {
-
-    }
 }

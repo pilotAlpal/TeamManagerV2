@@ -14,13 +14,9 @@ public class Player implements Serializable {
     private Bitmap photo;
     private ArrayList<String> teamNames;
 
-    public Player(String nombre,String telefono,Position posicion){
-        name=nombre;phone=telefono;playerInfo=new PlayerStats(posicion);
-        teamNames=new ArrayList<>();
-    }
 
-    public Player(String nombre, String telefono, Position pos, ArrayList<String> equipos) {
-        name=nombre;phone=telefono;playerInfo=new PlayerStats(pos);
+    public Player(String telefono, String nombre, Position pos, ArrayList<String> equipos) {
+        name=nombre;phone=telefono;playerInfo=MyUtils.getEmptyPlayerStats(pos);
         teamNames=equipos;
     }
 

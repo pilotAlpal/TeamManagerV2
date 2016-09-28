@@ -12,7 +12,7 @@ import java.util.GregorianCalendar;
  */
 public class NoShceduledMatches extends Match {
     public NoShceduledMatches() {
-        super(Calendar.getInstance().getTime(), new Time(SystemClock.currentThreadTimeMillis()));
+        super(Calendar.getInstance().getTime(), new Time(SystemClock.currentThreadTimeMillis()),"No scheduled");
     }
 
 

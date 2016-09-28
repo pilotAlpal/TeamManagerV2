@@ -12,12 +12,6 @@ public class TeamStats implements Serializable{
     private HashMap<String,Integer> jugGoles,jugAsistencias,jugPlayed;
     private String topScorer,topAsistant,topPlayed;
 
-    public TeamStats(){
-        jugados=0;ganados=0;empatados=0;perdidos=0;favor=0;contra=0;
-        jugGoles=new HashMap<>();jugAsistencias=new HashMap<>();jugPlayed=new HashMap<>();
-        topScorer="Empty";topAsistant="Empty";topPlayed="Empty";
-    }
-
     public TeamStats(int j,int g,int e,int p,int f,int c,
                      HashMap<String,Integer> jG,HashMap<String,Integer> jA,HashMap<String ,Integer> jP,
                      String tS,String tA,String tP){

@@ -16,18 +16,10 @@ public class Team implements Serializable{
         name=teamName;info=ts;players=plantilla;agenda=diario;
     }
 
-
-    public Team(String teamName, ArrayList<Player> plantilla) {
-        name=teamName;info=new TeamStats();players=plantilla;agenda=new Diary();
-    }
-
     public String getName(){return name;}
     public TeamStats getInfo(){return info;}
     public ArrayList<Player> getPlayers(){
         return players;
-    }
-    public Diary getDiary(){
-        return agenda;
     }
     public void addMatch(Match m){
         agenda.createMatch(m);
@@ -85,7 +77,7 @@ public class Team implements Serializable{
 
 
     public PlayerStats getPartnerStats(String partnerId) {
-        PlayerStats r=new PlayerStats(Position.Central);
+        PlayerStats r=MyUtils.getEmptyPlayerStats(Position.Central);
         for(Player p:players){
             if(p.getName().equalsIgnoreCase(partnerId))
                 return p.getPlayerInfo();

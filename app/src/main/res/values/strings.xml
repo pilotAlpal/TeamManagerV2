@@ -26,4 +26,14 @@
     <string name="asists">Asistencias</string>
     <string name="expulsions">Expulsiones</string>
     <string name="played">jugados</string>
+    <string name="change_pic">Cambiar Foto</string>
+    <string name="save">Guardar</string>
+    <string name="search_team">Buscar Equipo</string>
+    <string name="create_team">Crear equipo</string>
+    <string name="quit">Abandonar</string>
+    <string name="open_calendar">Abrir Calendario</string>
+    <string name="create_event">Crear Evento</string>
+    <string name="create_match">Crear Partido</string>
+    <string name="result">Resultado</string>
+    <string name="date">Fecha</string>
 </resources>

@@ -30,7 +30,7 @@ public class HomeActivity extends ControlledViewActivity {
         changeRightFragment(t);
     }
     public void eventsButton(View view){
-        EventsFragment c=new EventsFragment();
+        EventsFragment c=new EventsFragment().newInstance(controller);
         changeRightFragment(c);
     }
     public void logOutButton(View view){
@@ -98,6 +98,6 @@ public class HomeActivity extends ControlledViewActivity {
     }
 
     private void changeRightFragment(ViewFragment viewFragment){
-        getFragmentManager().beginTransaction().replace(R.id.f_info,viewFragment);
+        getFragmentManager().beginTransaction().replace(R.id.f_info,viewFragment).addToBackStack(null).commit();
     }
 }

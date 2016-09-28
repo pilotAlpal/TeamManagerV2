@@ -17,10 +17,7 @@ public class Diary implements Serializable {
         eventos=e;ultimos=u;proximos=p;prPartido=m;
         mensajes=conver;
     }
-    public Diary(){
-        eventos=new ArrayList<>();ultimos=new ArrayList<>();proximos=new ArrayList<>();eventos=new ArrayList<>();
-        prPartido=new NoShceduledMatches();
-    }
+
     private Match getNext(){
         if(proximos.isEmpty())
             return new NoShceduledMatches();

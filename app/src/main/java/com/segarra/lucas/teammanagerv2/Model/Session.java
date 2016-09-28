@@ -190,6 +190,15 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
         }
     }
 
+    public void addToNextMatch(){
+        equipo.addToNextMatch(jugador);
+        dao.addToNextMatch(jugador);
+    }
+
+    public void removeFromNextMatch(){
+        equipo.removeFromNextMatch(jugador);
+        dao.removeFromNextMatch(jugador);
+    }
 
     //AUXILIAR METHODS
 

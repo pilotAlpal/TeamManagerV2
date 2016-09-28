@@ -14,10 +14,6 @@ public class PlayerStats implements Serializable {
         goles=g;asistencias=a;partidos=p;rating=r;posicion=pos;
     }
 
-    public PlayerStats(Position position) {
-        goles=0;asistencias=0;partidos=0;rating=0;
-        posicion=position;
-    }
 
     public int getGols(){return goles;}
     public int getAsists(){return asistencias;}

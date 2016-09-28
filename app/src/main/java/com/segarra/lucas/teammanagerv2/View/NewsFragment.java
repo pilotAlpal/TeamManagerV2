@@ -87,6 +87,9 @@ public class NewsFragment extends ViewFragment {
 
     @Override
     public NewsFragment newInstance(Controller controller) {
-        return null;
+        NewsFragment newsFragment=new NewsFragment();
+        newsFragment.setController(controller);
+        controller.fillData(newsFragment);
+        return newsFragment;
     }
 }

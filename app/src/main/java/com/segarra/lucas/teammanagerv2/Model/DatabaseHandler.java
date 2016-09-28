@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import com.segarra.lucas.teammanagerv2.Model.MyUtils;
 
 /**
  * Created by lucas.segarra on 22/09/2016.
@@ -26,9 +27,7 @@ public class DatabaseHandler implements Serializable{
      * @return el jugador asociado a un teléfono
      */
     public Player getPlayer(String phone) {
-        ArrayList<String> equipos=new ArrayList<>();
-        equipos.add("Deporrito");equipos.add("Bravas");equipos.add("Remendados");
-        return new Player("Lucas",phone,Position.Mediapunta,equipos);
+        return MyUtils.getSamplePlayer(phone);
     }
 
     /**
@@ -37,7 +36,8 @@ public class DatabaseHandler implements Serializable{
      * @return ultimo equipo con el que se ha registrado un jugador
      */
     public Team getLastTeamLogged(String phone) {
-        return new Team("Rayo Vaticano",new TeamStats(),new ArrayList<Player>(),new Diary());
+        Diary pruebas=MyUtils.getSampleDiary();
+        return new Team("Rayo Vaticano",MyUtils.getEmptyTeamStats(),new ArrayList<Player>(),MyUtils.getSampleDiary());
     }
 
     /**
@@ -58,7 +58,7 @@ public class DatabaseHandler implements Serializable{
      * @return jugador que acaba de ser creado
      */
     public Player signUpPlayer(String phone, String name, String pass, Position position) {
-        return new Player(name,phone,position);
+        return MyUtils.getSamplePlayer(phone,name,position,new ArrayList<String>());
     }
 
     /**
@@ -79,7 +79,7 @@ public class DatabaseHandler implements Serializable{
     public Team createTeam(String tName,Player p) {
         ArrayList<Player> teamComps=new ArrayList<>();
         teamComps.add(p);
-        return new Team(tName,teamComps);
+        return new Team(tName,MyUtils.getEmptyTeamStats(),teamComps,MyUtils.getSampleDiary());
     }
 
     /**
@@ -89,7 +89,7 @@ public class DatabaseHandler implements Serializable{
      * @return
      */
     public Team createTeam(String teamName, ArrayList<Player> teamMates) {
-        return new Team(teamName,teamMates);
+        return new Team(teamName,MyUtils.getEmptyTeamStats(),teamMates,MyUtils.getSampleDiary());
     }
 
     /**
@@ -98,7 +98,7 @@ public class DatabaseHandler implements Serializable{
      * @return Información asociada a un equipo
      */
     public Team getTeam(String teamName) {
-        return new Team(teamName,new TeamStats(),new ArrayList<Player>(),new Diary());
+        return new Team(teamName,MyUtils.getEmptyTeamStats(),new ArrayList<Player>(),MyUtils.getSampleDiary());
     }
 
 
@@ -166,5 +166,11 @@ public class DatabaseHandler implements Serializable{
      */
     public void linkTeamAndPlayer(String phone, String team) {
 
+    }
+
+    public void addToNextMatch(Player jugador) {
+    }
+
+    public void removeFromNextMatch(Player jugador) {
     }
 }

@@ -1,15 +1,21 @@
 package com.segarra.lucas.teammanagerv2.View;
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
+import android.widget.TextView;
+import android.widget.ToggleButton;
 
 
 import com.movildat.lucassegarra.teammangaerv2.R;
 import com.segarra.lucas.teammanagerv2.Controller.Controller;
 import com.segarra.lucas.teammanagerv2.Model.MatchInfo;
 import com.segarra.lucas.teammanagerv2.View.Abstract.ViewFragment;
+import com.segarra.lucas.teammanagerv2.View.Adapters.PlayersListAdapter;
 
 import java.util.Observable;
 
@@ -19,9 +25,36 @@ import java.util.Observable;
 
 public class NextMatchFragment extends ViewFragment {
 
+    private MatchInfo matchInfo;
+    private TextView rNam,nConv;
+    private RecyclerView recyclerView;
+    private ToggleButton acudir;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
-        return inflater.inflate(R.layout.fragment_next_match,viewGroup,false);
+        View v= inflater.inflate(R.layout.fragment_next_match,viewGroup,false);
+        rNam=(TextView)v.findViewById(R.id.eT_prox_rival);
+        acudir=(ToggleButton)v.findViewById(R.id.toggleButton);
+        acudir.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b)
+                    controller.addToNextMatch();
+                else controller.removeFromNextMatch();
+            }
+        });
+        nConv=(TextView)v.findViewById(R.id.tv_n_confirmados);
+        recyclerView=(RecyclerView) v.findViewById(R.id.rv_players_layout);
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager  myLayoutManager=new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(myLayoutManager);
+        RecyclerView.Adapter adapter=new PlayersListAdapter(matchInfo.getConvocatory());
+        recyclerView.setAdapter(adapter);
+        return v;
+    }
+
+    public void fill(MatchInfo nextMatchInfo) {
+        matchInfo=nextMatchInfo;
     }
 
     @Override
@@ -85,11 +118,12 @@ public class NextMatchFragment extends ViewFragment {
     }
 
     @Override
-    public ViewFragment newInstance(Controller controller) {
-        return null;
+    public NextMatchFragment newInstance(Controller controller) {
+        NextMatchFragment nextMatchFragment=new NextMatchFragment();
+        nextMatchFragment.setController(controller);
+        controller.fillData(nextMatchFragment);
+        return nextMatchFragment;
     }
 
-    public void fill(MatchInfo nextMatchInfo) {
 
-    }
 }
