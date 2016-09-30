@@ -36,7 +36,6 @@ public class DatabaseHandler implements Serializable{
      * @return ultimo equipo con el que se ha registrado un jugador
      */
     public Team getLastTeamLogged(String phone) {
-        Diary pruebas=MyUtils.getSampleDiary();
         return new Team("Rayo Vaticano",MyUtils.getEmptyTeamStats(),new ArrayList<Player>(),MyUtils.getSampleDiary());
     }
 
@@ -172,5 +171,9 @@ public class DatabaseHandler implements Serializable{
     }
 
     public void removeFromNextMatch(Player jugador) {
+    }
+
+    public void save(String myPlayerId, Position p, String team) {
+
     }
 }

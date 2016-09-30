@@ -4,6 +4,7 @@ import android.app.Fragment;
 
 import com.segarra.lucas.teammanagerv2.Controller.Controller;
 import com.segarra.lucas.teammanagerv2.Model.EventsInfo;
+import com.segarra.lucas.teammanagerv2.Model.PlayerStats;
 import com.segarra.lucas.teammanagerv2.Model.Session;
 
 import java.io.Serializable;

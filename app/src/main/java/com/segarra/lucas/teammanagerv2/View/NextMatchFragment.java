@@ -113,6 +113,31 @@ public class NextMatchFragment extends ViewFragment {
     }
 
     @Override
+    public void onMyPlayerProfile() {
+
+    }
+
+    @Override
+    public void onMyTeamProfile() {
+
+    }
+
+    @Override
+    public void onEvents() {
+
+    }
+
+    @Override
+    public void onTeamSearch() {
+
+    }
+
+    @Override
+    public void onNewTeam() {
+
+    }
+
+    @Override
     public void update(Observable o, Object arg) {
 
     }
@@ -124,6 +149,5 @@ public class NextMatchFragment extends ViewFragment {
         controller.fillData(nextMatchFragment);
         return nextMatchFragment;
     }
-
 
 }

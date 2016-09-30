@@ -25,7 +25,7 @@
     <string name="goles">Goles</string>
     <string name="asists">Asistencias</string>
     <string name="expulsions">Expulsiones</string>
-    <string name="played">jugados</string>
+    <string name="played">Jugados</string>
     <string name="change_pic">Cambiar Foto</string>
     <string name="save">Guardar</string>
     <string name="search_team">Buscar Equipo</string>
@@ -36,4 +36,7 @@
     <string name="create_match">Crear Partido</string>
     <string name="result">Resultado</string>
     <string name="date">Fecha</string>
+    <string name="abandonar">Abandonar</string>
+    <string name="borrar">Borrar</string>
+
 </resources>

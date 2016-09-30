@@ -3,20 +3,15 @@ package com.segarra.lucas.teammanagerv2.View.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
-
 import android.net.Uri;
-
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import com.movildat.lucassegarra.teammangaerv2.R;
 import com.segarra.lucas.teammanagerv2.Model.Player;
-
 import java.util.ArrayList;
 
 
@@ -27,8 +22,8 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     private ArrayList<Player> mDataSet;
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView mTextView;
-        public ImageButton butt;
+        private TextView mTextView;
+        private ImageButton butt;
         private String number="626992478";
 
         public ViewHolder(View v){
@@ -50,13 +45,10 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
         }
     }
 
-
     public PlayersListAdapter(ArrayList<Player> data){
         if(data!=null)
             mDataSet=data;
     }
-
-
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){

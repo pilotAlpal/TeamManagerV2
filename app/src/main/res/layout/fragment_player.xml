@@ -5,20 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/fp_main_layout"
-    android:gravity="end|right"
+    android:gravity="end"
     android:weightSum="1">
 
-    <include layout="@layout/layout_player_image"/>
+    <include layout="@layout/layout_player_image"
+        android:id="@+id/img_layout"/>
 
 
-    <include layout="@layout/layout_rating"/>
+    <include layout="@layout/layout_rating"
+        android:id="@+id/rating_layout"/>
 
     <include layout="@layout/layout_player_stats"
-        android:id="@+id/psl_psv"/>
+        android:id="@+id/player_stats_layout"/>
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.segarra.lucas.teammanagerv2.View.EditProfileFragment"
+        android:name="com.segarra.lucas.teammanagerv2.View.EmptyFragment"
         android:id="@+id/edit_prof_fragment"
         android:layout_gravity="center_horizontal" />
 

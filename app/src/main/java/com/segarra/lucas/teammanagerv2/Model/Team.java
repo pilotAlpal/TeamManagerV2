@@ -76,15 +76,6 @@ public class Team implements Serializable{
     public int getPlayedRecord(){return info.getPlayedRecord();}
 
 
-    public PlayerStats getPartnerStats(String partnerId) {
-        PlayerStats r=MyUtils.getEmptyPlayerStats(Position.Central);
-        for(Player p:players){
-            if(p.getName().equalsIgnoreCase(partnerId))
-                return p.getPlayerInfo();
-        }
-        return r;
-    }
-
     public ArrayList<MyEvents> getEvents() {
         return agenda.getEvents();
     }

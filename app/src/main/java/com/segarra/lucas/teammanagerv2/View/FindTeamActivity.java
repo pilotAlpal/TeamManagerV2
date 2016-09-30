@@ -1,26 +1,37 @@
 package com.segarra.lucas.teammanagerv2.View;
 
-
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import com.movildat.lucassegarra.teammangaerv2.R;
-import com.segarra.lucas.teammanagerv2.Controller.Controller;
-import com.segarra.lucas.teammanagerv2.Model.Message;
-import com.segarra.lucas.teammanagerv2.View.Abstract.ViewFragment;
+import android.widget.Button;
+import android.widget.EditText;
 
-import java.util.ArrayList;
+import com.movildat.lucassegarra.teammangaerv2.R;
+import com.segarra.lucas.teammanagerv2.View.Abstract.ViewActivity;
+
 import java.util.Observable;
 
 /**
- * Created by lucas.segarra on 27/09/2016.
+ * Created by lucas.segarra on 30/09/2016.
  */
-public class NewsFragment extends ViewFragment {
+public class FindTeamActivity extends ViewActivity {
+    private EditText etTeamName;
+    private Button save;
+
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
-        return inflater.inflate(R.layout.fragment_news,viewGroup,false);
+    public void onCreate(Bundle saved){
+        super.onCreate(saved);
+        setContentView(R.layout.layout_load_teams);
+        etTeamName=(EditText)findViewById(R.id.et_team_name);
+        save=(Button)findViewById(R.id.b_register_team);
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                controller.joinTeam(etTeamName.getText().toString());
+            }
+        });
     }
+
     @Override
     public void onInvalidLogin() {
 
@@ -102,19 +113,12 @@ public class NewsFragment extends ViewFragment {
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-
-    }
-
-    public void fill(ArrayList<Message> teamMessages) {
+    public void onChangesSaved() {
 
     }
 
     @Override
-    public NewsFragment newInstance(Controller controller) {
-        NewsFragment newsFragment=new NewsFragment();
-        newsFragment.setController(controller);
-        controller.fillData(newsFragment);
-        return newsFragment;
+    public void update(Observable o, Object arg) {
+
     }
 }

@@ -15,10 +15,10 @@ public class Match extends MyEvents {
     private ArrayList<Gol> golesF,golesC;
 
 
-    public Match(Date d, Time t, String tit){
+    public Match(Date d, Time t, String tit, ArrayList<Player> players){
         super(d,t,tit);
         estado=MatchState.Unstarted;
-        convocatoria=new ArrayList<>();
+        convocatoria=players;
         golesF=new ArrayList<>();
         golesC=new ArrayList<>();
     }

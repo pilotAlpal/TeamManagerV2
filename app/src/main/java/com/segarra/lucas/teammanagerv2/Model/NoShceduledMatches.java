@@ -3,6 +3,7 @@ package com.segarra.lucas.teammanagerv2.Model;
 import android.os.SystemClock;
 
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -12,7 +13,7 @@ import java.util.GregorianCalendar;
  */
 public class NoShceduledMatches extends Match {
     public NoShceduledMatches() {
-        super(Calendar.getInstance().getTime(), new Time(SystemClock.currentThreadTimeMillis()),"No scheduled");
+        super(Calendar.getInstance().getTime(), new Time(SystemClock.currentThreadTimeMillis()),"No scheduled",new ArrayList<Player>());
     }
 
 

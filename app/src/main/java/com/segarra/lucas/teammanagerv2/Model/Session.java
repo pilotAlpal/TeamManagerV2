@@ -200,6 +200,35 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
         dao.removeFromNextMatch(jugador);
     }
 
+    
+    //BUTTONS FLOW METHODS
+    public void showMyPlayerProfile() {
+        notifyMyPlayerProfile();
+    }
+
+    public void showMyTeamProfile(){
+        notifyMyTeamProfile();
+    }
+    
+    public void showMyEvents(){
+        notifyEvents();
+    }
+
+    public void searchTeam() {
+        notifyTeamSearch();
+    }
+
+    public void save(Position p, String team) {
+        dao.save(getMyPlayerId(),p,team);
+        notifyChangesSaved();
+    }
+
+
+    public void showNewTeam() {
+        notifyNewTeam();
+    }
+
+
     //AUXILIAR METHODS
 
     private void checkAtLeastOneTeam(){
@@ -227,10 +256,6 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
         return jugador.getPlayerInfo();
     }
 
-    public PlayerStats getPartnerStats(String partnerId){
-        return equipo.getPartnerStats(partnerId);
-    }
-
     public TeamStats getMyTeamStats(){
         return equipo.getInfo();
     }
@@ -255,6 +280,11 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
         return equipo.getNextMatchInfo();
     }
 
+    public EventsInfo getEventsInfo() {
+        return equipo.getEventsInfo();
+    }
+
+
 
     //OBSERVABLE IMPLEMENTED
 
@@ -277,69 +307,95 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
 
     //OBSERVERS NOTIFIERS
     private void notifyInvalidEnrollTeamName() {
-        for (MyObserver o:observadores){
-            o.onInvalidEnrollTeamName();
-        }
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onInvalidEnrollTeamName();
     }
 
+    private void notifyNewTeam() {
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onNewTeam();
+    }
+
+
     private void notifyMatchCreated() {
-        for(MyObserver o:observadores){
-            o.onMatchCreated();
-        }
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onMatchCreated();
+
     }
 
     private void notifyTeamChanged() {
-        for(MyObserver o:observadores){
-            o.onTeamChanged();
-        }
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onTeamChanged();
     }
 
     private void notifyPictureChanged() {
-        for(MyObserver o:observadores){
-            o.onPictureChanged();
-        }
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onPictureChanged();
     }
 
     private void notifyTeamCreated() {
-        for(MyObserver o:observadores){
-            o.onTeamCreated();
-        }
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onTeamCreated();
+
     }
 
     private void notifySigned() {
-        for(MyObserver o:observadores){
-            o.onSigned();
-        }
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onSigned();
     }
-    
+
+    private void notifyChangesSaved() {
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onChangesSaved();
+
+    }
+
+
     private void notifyLogged() {
-        for (MyObserver o:observadores)
-            o.onLogged();
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onLogged();
     }
     
     private void notifyNoTeamUser() {
-        for (MyObserver o:observadores)
-            o.onNoTeamUser();
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onNoTeamUser();
     }
 
     private void notifyInvalidCreateTeamName() {
-        for (MyObserver obs:observadores)
-            obs.onInvalidCreateTeamName();
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onInvalidCreateTeamName();
     }
 
     private void notifyInvalidSignUp() {
-        for (MyObserver obs:observadores)
-            obs.onInvalidSignUp();
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onInvalidSignUp();
     }
 
     private void notifyInvalidLogin() {
-        for(MyObserver obs:observadores)
-            obs.onInvalidLogin();
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onInvalidLogin();
     }
 
-    public EventsInfo getEventsInfo() {
-        return equipo.getEventsInfo();
+    private void notifyMyPlayerProfile() {
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onMyPlayerProfile();
     }
+
+    private void notifyMyTeamProfile() {
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onMyTeamProfile();
+    }
+
+    private void notifyEvents() {
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onEvents();
+    }
+
+    private void notifyTeamSearch() {
+        for(int i = 0 ; i < observadores.size() ; i++)
+            observadores.get(i).onTeamSearch();
+    }
+
 
 
     /**
@@ -370,5 +426,17 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
         void onMatchCreated();
 
         void onInvalidEnrollTeamName();
+
+        void onMyPlayerProfile();
+
+        void onMyTeamProfile();
+
+        void onEvents();
+
+        void onTeamSearch();
+
+        void onNewTeam();
+
+        void onChangesSaved();
     }
 }

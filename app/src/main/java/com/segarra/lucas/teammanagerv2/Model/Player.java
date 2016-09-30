@@ -9,19 +9,17 @@ import java.util.ArrayList;
  * Created by lucas.segarra on 22/09/2016.
  */
 public class Player implements Serializable {
-    private String name,phone;
     private PlayerStats playerInfo;
     private Bitmap photo;
-    private ArrayList<String> teamNames;
+
 
 
     public Player(String telefono, String nombre, Position pos, ArrayList<String> equipos) {
-        name=nombre;phone=telefono;playerInfo=MyUtils.getEmptyPlayerStats(pos);
-        teamNames=equipos;
+        playerInfo=MyUtils.getEmptyPlayerStats(nombre,telefono,pos,equipos);
     }
 
-    public String getName(){return name;}
-    public String getPhone(){return phone;}
+    public String getName(){return playerInfo.getName();}
+    public String getPhone(){return playerInfo.getPhone();}
     public int getGols(){return playerInfo.getGols();}
     public int getAsists(){return playerInfo.getAsists();}
     public int getMatches(){return playerInfo.getMatches();}
@@ -39,14 +37,14 @@ public class Player implements Serializable {
     }
 
     public void removeEnrolledTeam(String myTeamName) {
-        teamNames.remove(myTeamName);
+        playerInfo.remove(myTeamName);
     }
 
     public void enrollTeam(String teamName) {
-        teamNames.add(teamName);
+        playerInfo.add(teamName);
     }
 
     public int getCountTeams() {
-        return teamNames.size();
+        return playerInfo.getTeams().size();
     }
 }

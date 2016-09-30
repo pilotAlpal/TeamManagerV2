@@ -102,6 +102,36 @@ public class LogInActivity extends ViewActivity {
     }
 
     @Override
+    public void onMyPlayerProfile() {
+
+    }
+
+    @Override
+    public void onMyTeamProfile() {
+
+    }
+
+    @Override
+    public void onEvents() {
+
+    }
+
+    @Override
+    public void onTeamSearch() {
+
+    }
+
+    @Override
+    public void onNewTeam() {
+
+    }
+
+    @Override
+    public void onChangesSaved() {
+
+    }
+
+    @Override
     public void update(Observable o, Object arg) {
 
     }

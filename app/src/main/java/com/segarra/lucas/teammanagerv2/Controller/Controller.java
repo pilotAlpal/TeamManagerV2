@@ -7,6 +7,7 @@ import com.segarra.lucas.teammanagerv2.Model.MyEvents;
 import com.segarra.lucas.teammanagerv2.Model.Player;
 import com.segarra.lucas.teammanagerv2.Model.Position;
 import com.segarra.lucas.teammanagerv2.Model.Session;
+import com.segarra.lucas.teammanagerv2.View.EditProfileFragment;
 import com.segarra.lucas.teammanagerv2.View.EventsFragment;
 import com.segarra.lucas.teammanagerv2.View.NewsFragment;
 import com.segarra.lucas.teammanagerv2.View.NextMatchFragment;
@@ -73,18 +74,16 @@ public class Controller implements Serializable{
     }
     public void addToNextMatch(){mySession.addToNextMatch();}
     public void removeFromNextMatch(){mySession.removeFromNextMatch();}
-
     public Position[] getPlayersPositions() {
         return Position.values();
     }
-
     public void logOut() {
         mySession.logOut();
     }
-
     public void removeObservers() {
         mySession.removeObservers();
     }
+
 
     //METHOS FILLING VIEWS DATA
     public void fillData(PlayerFragment p) {p.fill(mySession.getMyPlayerStats());}
@@ -92,5 +91,33 @@ public class Controller implements Serializable{
     public void fillData(NextMatchFragment nM){nM.fill(mySession.getNextMatchInfo());}
     public void fillData(EventsFragment eF){eF.fill(mySession.getEventsInfo(),mySession.getLastMatches(),mySession.getNextMatches());}
     public void fillData(TeamFragment tF){tF.fill(mySession.getMyTeamStats());}
+    public void fillData(EditProfileFragment editProfileFragment) {
+        editProfileFragment.fill(mySession.getMyPlayerStats());
+    }
+
+    //BUTTONS FLOW
+    public void showMyPlayerProfile() {
+        mySession.showMyPlayerProfile();
+    }
+
+    public void showMyTeamProfile() {
+        mySession.showMyTeamProfile();
+    }
+
+    public void showEvents() {
+        mySession.showMyEvents();
+    }
+
+    public void showSearchTeam() {
+        mySession.searchTeam();
+    }
+
+    public void showNewTeam(){
+        mySession.showNewTeam();
+    }
+
+    public void save(Position p, String team) {
+        mySession.save(p,team);
+    }
 
 }

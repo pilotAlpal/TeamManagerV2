@@ -10,20 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/player"
-        android:onClick="playerButton"
         android:id="@+id/b_stats_jug" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/team"
-        android:onClick="teamButton"
         android:id="@+id/b_stats_eq" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="eventsButton"
         android:text="@string/calendar"
         android:id="@+id/b_calendario" />
 
@@ -31,13 +28,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/log_out"
-        android:onClick="logOutButton"
-        android:id="@+id/b_volver"/>
+        android:id="@+id/b_salir"/>
 
     <fragment
+        android:name="com.segarra.lucas.teammanagerv2.View.EmptyFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.segarra.lucas.teammanagerv2.View.NextMatchFragment"
         android:id="@+id/fr_next_match"
         tools:layout="@layout/fragment_next_match" />
 
