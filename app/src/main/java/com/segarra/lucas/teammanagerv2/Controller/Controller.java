@@ -116,8 +116,8 @@ public class Controller implements Serializable{
         mySession.showNewTeam();
     }
 
-    public void save(Position p, String team) {
-        mySession.save(p,team);
+    public void saveProfileChanges(Position p, String team) {
+        mySession.saveProfileChanges(p,team);
     }
 
 }

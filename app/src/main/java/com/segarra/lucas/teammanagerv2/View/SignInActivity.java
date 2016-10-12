@@ -135,6 +135,11 @@ public class SignInActivity extends ControlledViewActivity {
     }
 
     @Override
+    public void onChangesSaved() {
+
+    }
+
+    @Override
     public void update(Observable o, Object arg) {
 
     }

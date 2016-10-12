@@ -11,9 +11,9 @@ import java.util.Date;
 public class Diary implements Serializable {
     private ArrayList<MyEvents> eventos;
     private ArrayList<Match> ultimos,proximos;
-    private ArrayList<Message> mensajes;
+    private ArrayList<MyMessage> mensajes;
     private Match prPartido;
-    public Diary(ArrayList<MyEvents> e,ArrayList<Match> u,ArrayList<Match> p,Match m,ArrayList<Message> conver){
+    public Diary(ArrayList<MyEvents> e,ArrayList<Match> u,ArrayList<Match> p,Match m,ArrayList<MyMessage> conver){
         eventos=e;ultimos=u;proximos=p;prPartido=m;
         mensajes=conver;
     }
@@ -89,7 +89,7 @@ public class Diary implements Serializable {
         return proximos;
     }
 
-    public ArrayList<Message> getMessages() {
+    public ArrayList<MyMessage> getMessages() {
         return mensajes;
     }
 

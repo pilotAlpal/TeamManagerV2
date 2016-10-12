@@ -18,7 +18,10 @@ public class EventsListAdapter extends RecyclerView.Adapter {
     private ArrayList<MyEvents> eventos;
 
     public EventsListAdapter(ArrayList<MyEvents> events) {
-        eventos=events;
+        if(events==null)
+            eventos=new ArrayList<>();
+        else
+            eventos=events;
     }
 
     private static class ViewHolder extends RecyclerView.ViewHolder{
@@ -43,7 +46,6 @@ public class EventsListAdapter extends RecyclerView.Adapter {
     }
 
 
-
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ViewHolder myHolder=(ViewHolder) holder;
@@ -55,6 +57,8 @@ public class EventsListAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
+        if (eventos.isEmpty())
+            return 0;
         return eventos.size();
     }
 }

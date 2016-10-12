@@ -104,7 +104,7 @@ public class Team implements Serializable{
         return null;
     }
 
-    public ArrayList<Message> getTeamMessages() {
+    public ArrayList<MyMessage> getTeamMessages() {
         return agenda.getMessages();
     }
 

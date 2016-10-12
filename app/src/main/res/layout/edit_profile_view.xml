@@ -71,14 +71,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/search_team"
-            android:onClick="showTeams"
             android:id="@+id/b_ep_busca_equipo"
             />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="newTeam"
             android:text="@string/create_team"
             android:id="@+id/b_crea_equipo"
             android:layout_column="1" />
@@ -92,14 +90,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/borrar"
-            android:onClick="leaveTeam"
             android:id="@+id/b_ep_abandonar" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quit"
-            android:onClick="deleteProfile"
             android:id="@+id/b_ep_borrar" />
     </TableRow>
 

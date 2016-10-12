@@ -26,7 +26,7 @@ public class EditProfileFragment extends ViewFragment {
     private String loadedTeam;
     private Position chosenPos;
     private Spinner spPos,spTeam;
-    private Button save,searchTeam,createTeam,errase,leaveTeam,changePic;
+    private Button save,searchTeam,createTeam,errase,leaveTeam;
 
     @Override
     public EditProfileFragment newInstance(Controller controller) {
@@ -76,7 +76,7 @@ public class EditProfileFragment extends ViewFragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                controller.save((Position)spPos.getSelectedItem(),(String)spTeam.getSelectedItem());
+                controller.saveProfileChanges((Position)spPos.getSelectedItem(),(String)spTeam.getSelectedItem());
             }
         });
         searchTeam=(Button)v.findViewById(R.id.b_ep_busca_equipo);

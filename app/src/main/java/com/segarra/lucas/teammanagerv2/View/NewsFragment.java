@@ -2,13 +2,16 @@ package com.segarra.lucas.teammanagerv2.View;
 
 
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.movildat.lucassegarra.teammangaerv2.R;
 import com.segarra.lucas.teammanagerv2.Controller.Controller;
-import com.segarra.lucas.teammanagerv2.Model.Message;
+import com.segarra.lucas.teammanagerv2.Model.MyMessage;
 import com.segarra.lucas.teammanagerv2.View.Abstract.ViewFragment;
+import com.segarra.lucas.teammanagerv2.View.Adapters.NewsListAdapter;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -17,9 +20,20 @@ import java.util.Observable;
  * Created by lucas.segarra on 27/09/2016.
  */
 public class NewsFragment extends ViewFragment {
+    private ArrayList<MyMessage> conversation;
+    private RecyclerView recyclerView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
-        return inflater.inflate(R.layout.fragment_news,viewGroup,false);
+        View v=inflater.inflate(R.layout.fragment_news,viewGroup,false);
+        recyclerView=(RecyclerView)v.findViewById(R.id.rv_news);
+        recyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager  myLayoutManager=new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(myLayoutManager);
+        RecyclerView.Adapter adapter=new NewsListAdapter(conversation);
+        recyclerView.setAdapter(adapter);
+
+        return v;
     }
     @Override
     public void onInvalidLogin() {
@@ -102,11 +116,17 @@ public class NewsFragment extends ViewFragment {
     }
 
     @Override
+    public void onChangesSaved() {
+
+    }
+
+    @Override
     public void update(Observable o, Object arg) {
 
     }
 
-    public void fill(ArrayList<Message> teamMessages) {
+    public void fill(ArrayList<MyMessage> teamMessages) {
+        conversation=teamMessages;
 
     }
 

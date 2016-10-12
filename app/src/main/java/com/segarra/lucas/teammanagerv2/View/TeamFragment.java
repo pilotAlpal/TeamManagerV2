@@ -10,6 +10,8 @@ import java.util.Observable;
  * Created by lucas.segarra on 27/09/2016.
  */
 public class TeamFragment extends ViewFragment{
+    private TeamStats myStats;
+
     @Override
     public TeamFragment newInstance(Controller controller) {
         TeamFragment teamFragment=new TeamFragment();
@@ -99,10 +101,16 @@ public class TeamFragment extends ViewFragment{
     }
 
     @Override
+    public void onChangesSaved() {
+
+    }
+
+    @Override
     public void update(Observable o, Object arg) {
 
     }
 
     public void fill(TeamStats myTeamStats) {
+        myStats=myTeamStats;
     }
 }

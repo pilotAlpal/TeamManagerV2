@@ -1,5 +1,7 @@
 package com.segarra.lucas.teammanagerv2.Model;
 
+import android.graphics.Bitmap;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -13,15 +15,22 @@ public class PlayerStats implements Serializable {
     private Position posicion;
     private String loadedTeam;
     private ArrayList<String> teams;
+    private Bitmap playerPic;
 
-    public PlayerStats(String fone, String naim, int g, int a, int p, float r, Position pos, String loaded, int num, int e, ArrayList<String> equipos){
-        phone=fone;name=naim;
-        expulsiones=e;
-        dorsal=num;
-        loadedTeam=loaded;
-        goles=g;asistencias=a;partidos=p;rating=r;posicion=pos;
-        teams=equipos;
+
+    private void initialStats(){
+        goles=0;asistencias=0;partidos=0;expulsiones=0;
+        rating=0;
     }
+
+    public PlayerStats(String telefono, String nombre, Position pos, ArrayList<String> equipos) {
+        phone=telefono;
+        name=nombre;
+        posicion=pos;
+        teams=equipos;
+        initialStats();
+    }
+
     public ArrayList<String> getTeams(){
         return teams;
     }
@@ -68,5 +77,13 @@ public class PlayerStats implements Serializable {
 
     public void add(String teamName) {
         teams.add(teamName);
+    }
+
+    public void changePic(Bitmap newPic) {
+        playerPic=newPic;
+    }
+
+    public Bitmap getPhoto() {
+        return playerPic;
     }
 }

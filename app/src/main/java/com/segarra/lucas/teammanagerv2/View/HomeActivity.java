@@ -48,18 +48,6 @@ public class HomeActivity extends ControlledViewActivity {
         }
     }
 
-    public void showTeams(View view){
-
-    }
-    public void newTeam(View view){
-
-    }
-    public void leaveTeam(View view){
-
-    }
-    public void deleteProfile(View view){
-
-    }
 
     //OBSERVER METHODS
 

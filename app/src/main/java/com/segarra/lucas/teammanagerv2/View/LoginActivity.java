@@ -7,13 +7,14 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import com.movildat.lucassegarra.teammangaerv2.R;
 import com.segarra.lucas.teammanagerv2.Controller.Controller;
 import com.segarra.lucas.teammanagerv2.View.Abstract.ViewActivity;
 
 import java.util.Observable;
 
-public class LogInActivity extends ViewActivity {
+public class LoginActivity extends ViewActivity {
 
     private EditText etPhone,etPass;
 
@@ -36,7 +37,7 @@ public class LogInActivity extends ViewActivity {
 
     public void displaySignIn(View view){
         createAndLoadController();
-        Intent signInIntent=new Intent(LogInActivity.this,SignInActivity.class);
+        Intent signInIntent=new Intent(LoginActivity.this,SignInActivity.class);
         Bundle b=getControlledBundle();
         signInIntent.putExtras(b);
         startActivity(signInIntent);
@@ -65,7 +66,7 @@ public class LogInActivity extends ViewActivity {
 
     @Override
     public void onLogged() {
-         Intent homeIntent = new Intent(LogInActivity.this,HomeActivity.class);
+         Intent homeIntent = new Intent(LoginActivity.this,HomeActivity.class);
          Bundle b=getControlledBundle();
          homeIntent.putExtras(b);
          startActivity(homeIntent);

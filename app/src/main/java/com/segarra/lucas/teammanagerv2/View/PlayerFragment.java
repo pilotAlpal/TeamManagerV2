@@ -21,11 +21,11 @@ import java.util.Observable;
  */
 public class PlayerFragment extends ViewFragment {
 
-    private ImageView imageView;
     private RatingBar ratingBar;
     private TextView nomUsuario,nomEquipo,posicion,dorsal,
                     goles,asisitencias,expulsiones,jugados;
     private PlayerStats playerStats;
+    private ImageView imageView;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
         View main= inflater.inflate(R.layout.fragment_player,viewGroup,false);
@@ -42,6 +42,7 @@ public class PlayerFragment extends ViewFragment {
         asisitencias=(TextView)aux.findViewById(R.id.tv_asistencias);
         expulsiones=(TextView)aux.findViewById(R.id.tv_expulsiones);
         jugados=(TextView)aux.findViewById(R.id.tv_jugados);
+        imageView.setImageBitmap(playerStats.getPhoto());
         ratingBar.setRating(playerStats.getRating());
         nomUsuario.setText(playerStats.getName());
         nomEquipo.setText(playerStats.getLoadedTeam());
@@ -110,7 +111,7 @@ public class PlayerFragment extends ViewFragment {
 
     @Override
     public void onPictureChanged() {
-
+        imageView.setImageBitmap(playerStats.getPhoto());
     }
 
     @Override
@@ -150,6 +151,11 @@ public class PlayerFragment extends ViewFragment {
 
     @Override
     public void onNewTeam() {
+
+    }
+
+    @Override
+    public void onChangesSaved() {
 
     }
 

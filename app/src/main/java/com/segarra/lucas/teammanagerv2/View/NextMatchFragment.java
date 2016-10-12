@@ -14,9 +14,11 @@ import android.widget.ToggleButton;
 import com.movildat.lucassegarra.teammangaerv2.R;
 import com.segarra.lucas.teammanagerv2.Controller.Controller;
 import com.segarra.lucas.teammanagerv2.Model.MatchInfo;
+import com.segarra.lucas.teammanagerv2.Model.Player;
 import com.segarra.lucas.teammanagerv2.View.Abstract.ViewFragment;
 import com.segarra.lucas.teammanagerv2.View.Adapters.PlayersListAdapter;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 /**
@@ -25,7 +27,8 @@ import java.util.Observable;
 
 public class NextMatchFragment extends ViewFragment {
 
-    private MatchInfo matchInfo;
+
+    private ArrayList<Player> nextConvocatory;
     private TextView rNam,nConv;
     private RecyclerView recyclerView;
     private ToggleButton acudir;
@@ -33,7 +36,7 @@ public class NextMatchFragment extends ViewFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewGroup, Bundle savedInstanceState){
         View v= inflater.inflate(R.layout.fragment_next_match,viewGroup,false);
-        rNam=(TextView)v.findViewById(R.id.eT_prox_rival);
+        rNam=(TextView)v.findViewById(R.id.tv_prox_rival);
         acudir=(ToggleButton)v.findViewById(R.id.toggleButton);
         acudir.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -48,13 +51,13 @@ public class NextMatchFragment extends ViewFragment {
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager  myLayoutManager=new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(myLayoutManager);
-        RecyclerView.Adapter adapter=new PlayersListAdapter(matchInfo.getConvocatory());
+        RecyclerView.Adapter adapter=new PlayersListAdapter(nextConvocatory);
         recyclerView.setAdapter(adapter);
         return v;
     }
 
     public void fill(MatchInfo nextMatchInfo) {
-        matchInfo=nextMatchInfo;
+        nextConvocatory=nextMatchInfo.getConvocatory();
     }
 
     @Override
@@ -134,6 +137,11 @@ public class NextMatchFragment extends ViewFragment {
 
     @Override
     public void onNewTeam() {
+
+    }
+
+    @Override
+    public void onChangesSaved() {
 
     }
 

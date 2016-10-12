@@ -139,6 +139,11 @@ public class OptionsFragment extends ViewFragment {
     }
 
     @Override
+    public void onChangesSaved() {
+
+    }
+
+    @Override
     public void update(Observable o, Object arg) {
 
     }

@@ -83,7 +83,9 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
     public void createTeam(String teamName){
         if(dao.validCreateTeamName(teamName)) {
             jugador.enrollTeam(teamName);
-            equipo =dao.createTeam(teamName,jugador);
+            ArrayList<Player> teamComps=new ArrayList<>();
+            teamComps.add(jugador);
+            equipo =dao.createTeam(teamName,teamComps);
             notifyTeamCreated();
         }
         else notifyInvalidCreateTeamName();
@@ -218,8 +220,8 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
         notifyTeamSearch();
     }
 
-    public void save(Position p, String team) {
-        dao.save(getMyPlayerId(),p,team);
+    public void saveProfileChanges(Position p, String team) {
+        dao.saveProfileChanges(getMyPlayerId(),p,team);
         notifyChangesSaved();
     }
 
@@ -272,7 +274,7 @@ public class Session implements MyObservable<Session.MyObserver>,Serializable {
         return equipo.getNextMatches();
     }
 
-    public ArrayList<Message> getTeamMessages() {
+    public ArrayList<MyMessage> getTeamMessages() {
         return equipo.getTeamMessages();
     }
 

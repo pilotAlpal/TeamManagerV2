@@ -1,7 +1,6 @@
 package com.segarra.lucas.teammanagerv2.Model;
 
 import java.sql.Time;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -10,12 +9,13 @@ import java.util.HashMap;
  * Created by lucas.segarra on 28/09/2016.
  */
 
-public  class MyUtils {
+ class MyUtils {
 
-    public static Diary getSampleDiary(){
+    static Diary getSampleDiary(){
         ArrayList<MyEvents> eventos=new ArrayList<>();
         ArrayList<Match> jugados=new ArrayList<>(),pendientes=new ArrayList<>();
-        ArrayList<Message> conversa=new ArrayList<Message>();
+        ArrayList<MyMessage> conversa=new ArrayList<MyMessage>();
+        conversa.add(new MyMessage("Hola y bienvienidos","666666666"));
         Date d=new Date();
         Time t=new Time(d.getTime());
         for(int i=1;i< 10;i++){
@@ -25,7 +25,7 @@ public  class MyUtils {
         return new Diary(eventos,jugados,pendientes,new Match(d,t,"Example Match",getSampleConvocatory()),conversa);
     }
 
-    public static ArrayList<Player> getSampleConvocatory() {
+    static ArrayList<Player> getSampleConvocatory() {
         ArrayList<Player> convocados=new ArrayList<>();
         String phone="626992478";
         ArrayList<String> equipos =new ArrayList<>();
@@ -43,18 +43,30 @@ public  class MyUtils {
         return convocados;
     }
 
-    public static TeamStats getEmptyTeamStats(){
+    static TeamStats getEmptyTeamStats(){
         return new TeamStats(0,0,0,0,0,0,new HashMap<String,Integer>(),new HashMap<String,Integer>(),new HashMap<String ,Integer> (),"Empty","Empty","Empty");
     }
-    public static PlayerStats getEmptyPlayerStats(String nombre, String telf, Position p, ArrayList<String> equipos){
-        return new PlayerStats(telf,nombre,0,0,0,0,p,"Valencia",14,15,equipos);
-    }
-    public static Player getSamplePlayer(String id){
+
+    static Player getSamplePlayer(String id){
         ArrayList<String> equipos=new ArrayList<>();
         equipos.add("Deporrito");equipos.add("Bravas");equipos.add("Remendados");
         return getSamplePlayer(id,"Lucas",Position.Mediapunta,equipos);
     }
-    public static Player getSamplePlayer(String phone,String name,Position position,ArrayList<String> equipos){
+    static Player getSamplePlayer(String phone,String name,Position position,ArrayList<String> equipos){
         return new Player(phone,name,position,equipos);
     }
+
+    static Team getSampleTeam(String teamName, ArrayList<Player> teamMates) {
+        return new Team(teamName,getEmptyTeamStats(),teamMates,getSampleDiary());
+    }
+
+    static Team getSampleTeam(String teamName) {
+        return getSampleTeam(teamName,getSampleConvocatory());
+    }
+
+    static Team getSampleTeam() {
+        return getSampleTeam("Rayo Vaticano",getSampleConvocatory());
+    }
+
+
 }

@@ -24,7 +24,7 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     public static class ViewHolder extends RecyclerView.ViewHolder{
         private TextView mTextView;
         private ImageButton butt;
-        private String number="626992478";
+        private String number;
 
         public ViewHolder(View v){
             super(v);
@@ -46,7 +46,9 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
     }
 
     public PlayersListAdapter(ArrayList<Player> data){
-        if(data!=null)
+        if(data==null)
+            mDataSet=new ArrayList<>();
+        else
             mDataSet=data;
     }
 
@@ -66,6 +68,8 @@ public class PlayersListAdapter extends RecyclerView.Adapter<PlayersListAdapter.
 
     @Override
     public int getItemCount(){
+        if(mDataSet.isEmpty())
+            return 0;
         return mDataSet.size();
     }
 

@@ -7,11 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import com.movildat.lucassegarra.teammangaerv2.R;
 import com.segarra.lucas.teammanagerv2.Controller.Controller;
 import com.segarra.lucas.teammanagerv2.Model.EventsInfo;
 import com.segarra.lucas.teammanagerv2.Model.Match;
+import com.segarra.lucas.teammanagerv2.Model.MyEvents;
 import com.segarra.lucas.teammanagerv2.View.Abstract.ViewFragment;
 import com.segarra.lucas.teammanagerv2.View.Adapters.EventsListAdapter;
 
@@ -25,7 +27,7 @@ public class EventsFragment extends ViewFragment {
 
     private RecyclerView myRecycler;
     private CardView myCard;
-    private EventsInfo myEventsInfo;
+    private ArrayList<MyEvents> myEventses;
     private ArrayList<Match> last,next;
 
     @Override
@@ -36,7 +38,7 @@ public class EventsFragment extends ViewFragment {
         myRecycler.setHasFixedSize(true);
         RecyclerView.LayoutManager rVlM=new LinearLayoutManager(getActivity());
         myRecycler.setLayoutManager(rVlM);
-        RecyclerView.Adapter adapter=new EventsListAdapter(myEventsInfo.getEvents());
+        RecyclerView.Adapter adapter=new EventsListAdapter(myEventses);
         myRecycler.setAdapter(adapter);
         return v;
     }
@@ -49,7 +51,8 @@ public class EventsFragment extends ViewFragment {
     }
 
     public void fill(EventsInfo eventsInfo, ArrayList<Match> lastMatches, ArrayList<Match> nextMatches) {
-        myEventsInfo=eventsInfo;last=lastMatches;next=nextMatches;
+        myEventses=eventsInfo.getEvents();
+        last=lastMatches;next=nextMatches;
     }
 
     @Override
@@ -129,6 +132,11 @@ public class EventsFragment extends ViewFragment {
 
     @Override
     public void onNewTeam() {
+
+    }
+
+    @Override
+    public void onChangesSaved() {
 
     }
 

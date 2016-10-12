@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.segarra.lucas.teammanagerv2.View.LogInActivity">
+    tools:context="com.segarra.lucas.teammanagerv2.View.LoginActivity">
 
     <LinearLayout
         android:orientation="vertical"
